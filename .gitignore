@@ -5,10 +5,11 @@ ansible/.ansible
 ansible/roles/geerlingguy.java
 ansible/roles/geerlingguy.jenkins
 ansible/roles/geerlingguy.sonar
-ansible/roles/wtanaka.unzip
-ansible/roles/savoirfairelinux.nexus3-oss
-ansible/roles/geerlingguy.git
-ansible/roles/tecris.maven
 ansible/roles/geerlingguy.repo-epel
 ansible/roles/geerlingguy.ansible
+ansible/roles/geerlingguy.git
+ansible/roles/geerlingguy.mysql
+ansible/roles/wtanaka.unzip
+ansible/roles/savoirfairelinux.nexus3-oss
+ansible/roles/tecris.maven
 ansible/.bash*
