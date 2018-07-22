@@ -1,0 +1,14 @@
+- name: Add repositories
+  apt_repository: repo='ppa:ansible/ansible' state=present
+
+- name: Set authorized key took from file
+  authorized_key:
+    user: rafael
+    state: present
+    key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+    path: "/home/rafael/.ssh/authorized_keys"
+
+- name: Update repositories cache and install ansible package
+  apt:
+    name: ansible
+    update_cache: yes

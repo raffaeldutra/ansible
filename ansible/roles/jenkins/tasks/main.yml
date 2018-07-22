@@ -1,0 +1,35 @@
+- name: Add Jenkins User
+  user:
+    name: jenkins
+    comment: "Jenkins CI User"
+    groups: users
+    append: yes
+
+- name: Allow 'wheel' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%users'
+    line: '%users ALL=(ALL) NOPASSWD: ALL'
+
+- name: Ensure SSH path
+  file:
+    path: /home/jenkins/.ssh
+    state: directory
+    mode: 0700
+    owner: jenkins
+    group: jenkins
+
+
+- name: Add pub key
+  copy:
+    src: keys/jenkins.pub
+    dest: /home/jenkins/.ssh/authorized_keys
+    owner: jenkins
+    group: jenkins
+    mode: 0600
+
+- name: Reseting network eth1
+  service:
+    name: networking
+    state: restarted

@@ -1,0 +1,18 @@
+---
+# Let's rock on ALM
+- name: Deploy Jenkins CI
+  hosts: jenkins_server
+  remote_user: "{{ ansible_ssh_user | default('vagrant') }}"
+  become: yes
+  roles:
+    - java8
+    - geerlingguy.jenkins
+    - jenkins
+
+- name: Install Ansible at local machine
+  hosts: localhost
+  become: yes
+  remote_user: rafael
+  roles:
+    - common
+    - ansible
