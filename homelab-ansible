@@ -1,0 +1,23 @@
+.\" Manpage for homelab-ansible.
+.\" Contact raffaeldutra@gmail.com to correct errors or typos.
+.TH man 8 "23 Jul 2018" "1.0" "homelab-ansible man page"
+.SH NAME
+homelab-ansible \- install Ansible in your machine
+.SH SYNOPSIS
+ansible.sh [OPTION]
+.SH DESCRIPTION
+homelab-ansible is high level shell program for Ansible installation in your machine.
+
+Usage: ansible.sh [OPTION]
+.TP 7
+.B -i, --install
+Install Ansible in your machine
+.TP 7
+.B -v, --version
+Show your distribution
+.SH SEE ALSO
+homelab(8)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Rafael Dutra (raffaeldutra@gmail.com)
