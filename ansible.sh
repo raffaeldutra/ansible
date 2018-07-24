@@ -5,28 +5,43 @@
 # Rafael Dutra <raffaeldutra@gmail.com>
 # https://rafaeldutra.me
 
-if [ $(whoami) = "root" ]; then
-    echo "Hey $(whoami) my friend, please be root"
+if [ $(whoami) != "root" ]; then
+    echo "Hey $(whoami) my friend, please be root or run me using sudo"
+    exit 1
 fi
 
 linuxDistribution="$(lsb_release -i | sed 's/\t//g' | cut -d ":" -f2 | tr [A-Z] [a-z])"
 linuxCodename="$(lsb_release -c | sed 's/\t//g' | cut -d ":" -f2)"
+
+function ansibleInstalled()
+{
+    $(which ansible 2>/dev/null >/dev/null) && ansibleInstalled=1
+
+    if [ ${ansibleInstalled} -eq 1 ]; then
+        echo "Ansible is already installed"
+        exit 1
+    fi
+}
 
 # Ubuntu flavors
 function ubuntu()
 {
     if [ ${linuxCodename} = "bionic" ]; then
         sudo apt-get update
-        sudo apt-get install software-properties-common
-        sudo apt-add-repository ppa:ansible/ansible
+        sudo apt-get install software-properties-common --yes
+
+	if [ ! -f "/etc/apt/sources.list.d/ansible-ubuntu-ansible-bionic.list" ]; then
+            sudo apt-add-repository ppa:ansible/ansible --yes
+	fi
+
         sudo apt-get update
-        sudo apt-get install ansible
+        sudo apt-get install ansible --yes
     elif [ ${linuxCodename} = "trusty" ]; then
         sudo apt-get update
-        sudo apt-get install python-software-properties
-        sudo apt-add-repository ppa:ansible/ansible
+        sudo apt-get install python-software-properties --yes
+        sudo apt-add-repository ppa:ansible/ansible --yes
         sudo apt-get update
-        sudo apt-get install ansible
+        sudo apt-get install ansible --yes
     else
         echo "Codename for this distribution not found"
         exit 1
@@ -38,11 +53,11 @@ function ubuntu()
 function debian()
 {
     if [ ${linuxCodename} = "squeeze" ]; then
-        deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+        #deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
         
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
         sudo apt-get update
-        sudo apt-get install ansible
+        sudo apt-get install ansible --yes
     else
         echo "Codename for this distribution not found"
         exit 1
@@ -53,8 +68,8 @@ function installManPage()
 {
     manName=homelab-ansible
 
-    install -g 0 -o 0 -m 0644 ${manName} "${manPath}/${manName}.8"
-    gzip --force "${manPath}/${manName}.8"
+    sudo install -g 0 -o 0 -m 0644 "man/${manName}" "${manPath}/${manName}.8"
+    sudo gzip --force "${manPath}/${manName}.8"
 }
 
 function install()
@@ -75,7 +90,10 @@ function help()
 }
 
 case "$1" in
-    -i | --install ) install
+    -i | --install ) ansibleInstalled
+	             install
+                     installManPage ;;
+    -f | --force )   install
                      installManPage ;;
     -v | --version ) echo "Distribution: ${linuxDistribution} - ${linuxCodename}" ;;
 *)
