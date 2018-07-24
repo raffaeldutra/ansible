@@ -13,6 +13,18 @@ fi
 linuxDistribution="$(lsb_release -i | sed 's/\t//g' | cut -d ":" -f2 | tr [A-Z] [a-z])"
 linuxCodename="$(lsb_release -c | sed 's/\t//g' | cut -d ":" -f2)"
 
+function checkRequiredPackages()
+{
+    sudo dpkg -s openssh-server >/dev/null 2>/dev/null
+
+    if [ $? -ne 0 ]; then
+	echo "Installing openssh-server"
+
+        sudo apt-get update
+	sudo apt-get install "openssh-server" --yes
+    fi
+}
+
 function ansibleInstalled()
 {
     $(which ansible 2>/dev/null >/dev/null) && ansibleInstalled=1
@@ -91,9 +103,11 @@ function help()
 
 case "$1" in
     -i | --install ) ansibleInstalled
-	             install
+                     checkRequiredPackages
+                     install
                      installManPage ;;
-    -f | --force )   install
+    -f | --force )   checkRequiredPackages
+                     install
                      installManPage ;;
     -v | --version ) echo "Distribution: ${linuxDistribution} - ${linuxCodename}" ;;
 *)
