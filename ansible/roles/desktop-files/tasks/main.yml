@@ -1,0 +1,5 @@
+  - name: Files for bash
+    import_tasks: bash.yml
+
+  - name: Files for git
+    import_tasks: git.yml
