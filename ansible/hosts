@@ -1,5 +1,8 @@
 [jenkins_server]
 jenkins.local ansible_ssh_host=172.16.10.100 ansible_ssh_port=22
 
-[localhost]
-localhost.local ansible_ssh_host=172.17.0.1 ansible_ssh_port=22
+[docker_localhost]
+docker.local ansible_ssh_host=172.17.0.1 ansible_ssh_port=22
+
+[localhost.local]
+localhost ansible_ssh_user=rafael ansible_ssh_host=127.0.0.1 ansible_ssh_port=22
