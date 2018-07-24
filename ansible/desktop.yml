@@ -1,0 +1,11 @@
+---
+- name: Install Ansible at local machine
+  hosts: localhost
+  become: yes
+  remote_user: rafael
+  roles:
+  # - common
+  # - atom
+  # - google-chrome
+  # - skype
+    - desktop-files
