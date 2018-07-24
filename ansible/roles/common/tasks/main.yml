@@ -6,7 +6,6 @@
       - gcc
       - make
       - vim
-      - htop
       - gnome-tweak-tool
       - virtualbox-dkms
     tags:
