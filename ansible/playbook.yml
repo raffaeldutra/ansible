@@ -1,5 +1,4 @@
 ---
-# Let's rock on ALM
 - name: Deploy Jenkins CI
   hosts: jenkins_server
   remote_user: "{{ ansible_ssh_user | default('vagrant') }}"
@@ -15,4 +14,6 @@
   remote_user: rafael
   roles:
     - common
-    - ansible
+    - atom
+    - google-chrome
+    - skype
