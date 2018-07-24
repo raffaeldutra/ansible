@@ -1,6 +1,6 @@
 .vagrant
 .DS_Store
-ansible/playbook.retry
+*.retry
 ansible/.ssh
 ansible/.ansible
 ansible/roles/geerlingguy.java
