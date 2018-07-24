@@ -1,0 +1,18 @@
+  - name: Test Slack installation
+    shell: "dpkg -s slack-desktop 2>/dev/null >/dev/null"
+    register: installed
+
+  - name: Downloading Slack
+    get_url:
+      url: https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-amd64.deb
+      dest: /tmp
+      mode: 0644
+  
+  - name: Installing Slack
+    apt:
+      deb: /tmp/slack-desktop-3.2.1-amd64.deb
+
+  - name: Removing slack-desktop-3.2.1-amd64.deb package
+    file:
+      state: absent
+      path: /tmp/slack-desktop-3.2.1-amd64.deb

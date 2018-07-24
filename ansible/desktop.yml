@@ -4,8 +4,5 @@
   become: yes
   remote_user: rafael
   roles:
-  # - common
-  # - atom
-  # - google-chrome
-  # - skype
-    - desktop-files
+    - common
+    - desktop-apps
