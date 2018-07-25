@@ -1,0 +1,11 @@
+username: rafael
+diskData: /dev/sda
+diskDataDestination: /mnt/sda
+virtualboxFolder: "VirtualBox VMs"
+virtualboxSource: "/home/{{ username }}/{{ virtualboxFolder }}"
+virtualboxDestination: "{{ diskDataDestination }}/virtualbox-vms"
+optionalMountingPoints:
+  - /mnt/sdb
+  - /mnt/sdc
+  - /mnt/1
+  - /mnt/2

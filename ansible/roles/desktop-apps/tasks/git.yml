@@ -2,9 +2,9 @@
     copy:
       src: "{{ item.src }}"
       dest: "{{ item.dest }}"
-      owner: rafael
-      group: rafael
+      owner: "{{ username }}"
+      group: "{{ username }}"
       mode: "{{ item.mode }}"
     with_items:
-      - { src: 'git/.gitconfig',   dest: '/home/rafael/.gitconfig',    mode: 0644 }
-      - { src: 'git/.gitexcludes', dest: '/home/rafael/.gitexcludes', mode: 0644 }
+      - { src: 'git/.gitconfig',   dest: '/home/{{ username }}/.gitconfig',    mode: 0644 }
+      - { src: 'git/.gitexcludes', dest: '/home/{{ username }}/.gitexcludes', mode: 0644 }
