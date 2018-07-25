@@ -1,3 +1,6 @@
+  - name: Environment setup
+    import_tasks: environment.yml
+
   - name: Files for bash
     import_tasks: bash.yml
 
@@ -48,4 +51,3 @@
   - name: Task for Slack
     import_tasks: slack.yml
     when: slack_installed.rc != 0
-

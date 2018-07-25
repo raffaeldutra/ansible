@@ -1,0 +1,22 @@
+# Create virtualbox folder if it not exists
+  - file:
+      path: "{{ diskDataDestination }}"
+      state: directory
+      mode: 0755
+
+  - name: Mount drive {{ diskData }} to {{ diskDataDestination }}
+    mount:
+      path: "{{ diskDataDestination }}"
+      src: "{{ diskData }}"
+      fstype: ext4
+      state: mounted
+
+# Create all directories needed at /mnt
+  - file:
+      path: "{{ item }}"
+      state: directory
+      mode: 0755
+      owner: "{{ username }}"
+      group: "{{ username }}"
+    with_items:
+      - "{{ optionalMountingPoints }}"
