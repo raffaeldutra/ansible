@@ -7,6 +7,9 @@
   - name: Files for git
     import_tasks: git.yml
 
+  - name: Virtualbox environment
+    import_tasks: virtualbox.yml
+
 # Telegram
   - name: Test Telegram installation
     shell: "dpkg -s telegram 2>/dev/null >/dev/null"

@@ -1,0 +1,15 @@
+# Create virtualbox folder if it not exists
+  - file:
+      path: "{{ virtualboxDestination }}"
+      state: directory
+      mode: 0755
+      owner: "{{ username }}"
+      group: "{{ username }}"
+
+# Create a synbolic link for virtualbox
+  - file:
+      src: "{{ virtualboxDestination }}"
+      dest: "{{ virtualboxSource }}"
+      owner: "{{ username }}"
+      group: "{{ username }}"
+      state: link
