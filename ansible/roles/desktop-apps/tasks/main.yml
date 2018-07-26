@@ -10,6 +10,9 @@
   - name: Virtualbox environment
     import_tasks: virtualbox.yml
 
+  - name: SSH environment
+    import_tasks: ssh.yml
+
 # Telegram
   - name: Test Telegram installation
     shell: "dpkg -s telegram 2>/dev/null >/dev/null"
