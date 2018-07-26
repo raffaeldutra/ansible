@@ -1,0 +1,4 @@
+- name: ensure SSH key is generated
+  command: ssh-keygen -t rsa -f /home/{{ username }}/.ssh/id_rsa -N ''
+  args:
+    creates: /home/{{ username }}/.ssh/id_rsa
