@@ -4,15 +4,15 @@
 
   - name: Downloading Slack
     get_url:
-      url: https://downloads.slack-edge.com/linux_releases/slack-desktop-3.2.1-amd64.deb
+      url: https://downloads.slack-edge.com/linux_releases/{{ slackPackageDeb }}
       dest: /tmp
       mode: 0644
-  
+
   - name: Installing Slack
     apt:
-      deb: /tmp/slack-desktop-3.2.1-amd64.deb
+      deb: /tmp/{{ slackPackageDeb }}
 
-  - name: Removing slack-desktop-3.2.1-amd64.deb package
+  - name: Removing {{ slackPackageDeb }} package
     file:
       state: absent
-      path: /tmp/slack-desktop-3.2.1-amd64.deb
+      path: /tmp/{{ slackPackageDeb }}
