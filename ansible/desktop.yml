@@ -4,6 +4,5 @@
   become: yes
   remote_user: rafael
   roles:
-    - common
     - desktop-apps
     - docker

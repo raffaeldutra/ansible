@@ -1,11 +1,19 @@
 username: rafael
 diskData: /dev/sda
 diskDataDestination: /mnt/sda
+
+# VirtualBox options
 virtualboxFolder: "VirtualBox VMs"
 virtualboxSource: "/home/{{ username }}/{{ virtualboxFolder }}"
 virtualboxDestination: "{{ diskDataDestination }}/virtualbox-vms"
+
 optionalMountingPoints:
   - /mnt/sdb
   - /mnt/sdc
   - /mnt/1
   - /mnt/2
+
+# Slack options
+slackVersion: 3.2.1
+slackArch: amd64
+slackPackageDeb: slack-desktop-{{ slackVersion }}-{{ slackArch }}.deb
