@@ -5,8 +5,9 @@
 # Rafael Dutra <raffaeldutra@gmail.com>
 # https://rafaeldutra.me
 
-if [ $(whoami) != "root" ]; then
-    echo "Hey $(whoami) my friend, please be root or run me using sudo"
+
+if [ "${0}" != "configure.sh" ]; then
+    echo "You need to call me directly from configure.sh script"
     exit 1
 fi
 
@@ -60,7 +61,6 @@ function ubuntu()
     fi
 }
     
-
 # Debian flavors
 function debian()
 {
