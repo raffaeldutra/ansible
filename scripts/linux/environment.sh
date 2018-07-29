@@ -43,7 +43,7 @@ function ubuntu()
         sudo apt-get install software-properties-common --yes
 
 	if [ ! -f "/etc/apt/sources.list.d/ansible-ubuntu-ansible-bionic.list" ]; then
-            sudo apt-add-repository ppa:ansible/ansible --yes
+        sudo apt-add-repository ppa:ansible/ansible --yes
 	fi
 
         sudo apt-get update
@@ -87,7 +87,7 @@ function install()
 {
     case "${linuxDistribution}" in
         ubuntu ) ubuntu
-		 manPath="/usr/share/man/man8" ;;
+                 manPath="/usr/share/man/man8" ;;
         debian ) debian
                  manPath="/usr/local/man/man8" ;;
     *)
