@@ -1,4 +1,21 @@
-## Docker usage
+
+# Windows 10 build 16215 and higher
+
+First, find the build number for your system
+
+```bash
+systeminfo | Select-String "^OS Name","^OS Version"
+```
+
+If you have the build version 16215, run the command below
+
+Open PowerShell as Administrator and run:
+
+```bash
+./configure.ps1
+```
+
+# Docker usage
 
 ```bash
 sudo docker run --rm \darjiyo
@@ -9,6 +26,7 @@ raffaeldutra/docker-ansible \
 ansible-playbook -i /root/hosts /root/playbook.yml -vvv --ask-become-pass
 ```
 
+# Linux Environment
 ssh-copy-id -i /root/.ssh/id_rsa.pub rafael@172.17.0.1
 
 ## Hand installation
@@ -22,7 +40,6 @@ Copy the public key to authorized_users
 ```bash
  ssh-copy-id rafael@localhost
 ```
-
 
 Run it
 ```bash

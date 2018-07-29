@@ -5,8 +5,8 @@
 # Rafael Dutra <raffaeldutra@gmail.com>
 # https://rafaeldutra.me
 
-if [ $(whoami) != "root" ]; then
-    echo "Hey $(whoami) my friend, please be root or run me using sudo"
+if [ "${0}" != "configure.sh" ]; then
+    echo "You need to call me directly from configure.sh script"
     exit 1
 fi
 
@@ -18,16 +18,16 @@ function checkRequiredPackages()
     sudo dpkg -s openssh-server >/dev/null 2>/dev/null
 
     if [ $? -ne 0 ]; then
-	echo "Installing openssh-server"
+        echo "Installing openssh-server"
 
         sudo apt-get update
-	sudo apt-get install "openssh-server" --yes
+	      sudo apt-get install openssh-server --yes
     fi
 }
 
 function ansibleInstalled()
 {
-    $(which ansible 2>/dev/null >/dev/null) && ansibleInstalled=1
+    $(which ansible 2>&1 > /dev/null) && ansibleInstalled=1 || ansibleInstalled=0
 
     if [ ${ansibleInstalled} -eq 1 ]; then
         echo "Ansible is already installed"
@@ -43,7 +43,7 @@ function ubuntu()
         sudo apt-get install software-properties-common --yes
 
 	if [ ! -f "/etc/apt/sources.list.d/ansible-ubuntu-ansible-bionic.list" ]; then
-            sudo apt-add-repository ppa:ansible/ansible --yes
+        sudo apt-add-repository ppa:ansible/ansible --yes
 	fi
 
         sudo apt-get update
@@ -59,14 +59,13 @@ function ubuntu()
         exit 1
     fi
 }
-    
 
 # Debian flavors
 function debian()
 {
     if [ ${linuxCodename} = "squeeze" ]; then
         #deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
-        
+
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
         sudo apt-get update
         sudo apt-get install ansible --yes
@@ -88,7 +87,7 @@ function install()
 {
     case "${linuxDistribution}" in
         ubuntu ) ubuntu
-		 manPath="/usr/share/man/man8" ;;
+                 manPath="/usr/share/man/man8" ;;
         debian ) debian
                  manPath="/usr/local/man/man8" ;;
     *)

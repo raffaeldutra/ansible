@@ -1,5 +1,6 @@
 .vagrant
 .DS_Store
+*.swp
 *.retry
 ansible/.ssh
 ansible/.ansible
