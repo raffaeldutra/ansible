@@ -18,16 +18,16 @@ function checkRequiredPackages()
     sudo dpkg -s openssh-server >/dev/null 2>/dev/null
 
     if [ $? -ne 0 ]; then
-	echo "Installing openssh-server"
+        echo "Installing openssh-server"
 
         sudo apt-get update
-	sudo apt-get install "openssh-server" --yes
+	      sudo apt-get install openssh-server --yes
     fi
 }
 
 function ansibleInstalled()
 {
-    $(which ansible 2>&1 > /dev/null) && ansibleInstalled=1
+    $(which ansible 2>&1 > /dev/null) && ansibleInstalled=1 || ansibleInstalled=0
 
     if [ ${ansibleInstalled} -eq 1 ]; then
         echo "Ansible is already installed"
