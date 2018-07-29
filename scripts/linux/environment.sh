@@ -5,7 +5,6 @@
 # Rafael Dutra <raffaeldutra@gmail.com>
 # https://rafaeldutra.me
 
-
 if [ "${0}" != "configure.sh" ]; then
     echo "You need to call me directly from configure.sh script"
     exit 1
@@ -28,7 +27,7 @@ function checkRequiredPackages()
 
 function ansibleInstalled()
 {
-    $(which ansible 2>/dev/null >/dev/null) && ansibleInstalled=1
+    $(which ansible 2>&1 > /dev/null) && ansibleInstalled=1
 
     if [ ${ansibleInstalled} -eq 1 ]; then
         echo "Ansible is already installed"
@@ -60,13 +59,13 @@ function ubuntu()
         exit 1
     fi
 }
-    
+
 # Debian flavors
 function debian()
 {
     if [ ${linuxCodename} = "squeeze" ]; then
         #deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
-        
+
         sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
         sudo apt-get update
         sudo apt-get install ansible --yes
