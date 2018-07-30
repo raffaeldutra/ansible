@@ -8,7 +8,7 @@ if ((Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem
         Write-Warning 'Unable to install the WSL feature!'
     }
 } else {
-    Write-Output 'Windows subsystem for Linux optional feature already installed!'
+    Write-Warning 'Windows subsystem for Linux optional feature already installed!'
 }
 
 $InstalledWSLDistros = @((Get-ChildItem 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss' -ErrorAction:SilentlyContinue | ForEach-Object { Get-ItemProperty $_.pspath }).DistributionName)
@@ -22,8 +22,7 @@ if ($InstalledWSLDistros -notcontains "ubuntu") {
 
     if (-not (Test-Path $WSLDownloadPath)) {
         Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1604 -OutFile C:\ubuntu.zip -UseBasicParsing
-    }
-    else {
+    } else {
         Write-Warning "The $Distro zip file appears to already be downloaded."
     }
 
@@ -32,10 +31,18 @@ if ($InstalledWSLDistros -notcontains "ubuntu") {
     if (Test-Path $WSLExe) {
         Write-Output "Starting $WSLExe"
         Start-Proc -Exe $WSLExe -waitforexit
-    }
-    else {
+    } else {
         Write-Warning "$WSLExe was not found for whatever reason"
     }
 } else {
     Write-Warning "Found $Distro is already installed on this system. Enter it simply by typing bash.exe"
+}
+
+# Install Chocolatey
+$ScriptDirectory = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+try {
+    . ("$ScriptDirectory\scripts\windows\environment.ps1")
+}
+catch {
+    Write-Host "Error while loading supporting PowerShell Scripts" 
 }
