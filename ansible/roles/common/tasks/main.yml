@@ -1,4 +1,5 @@
-  - name: Install base packages
+  - name: Install base
+    when: ansible_os_family|lower == "ubuntu"
     apt: name={{ item }} state=present
     with_items:
       - git
@@ -8,5 +9,15 @@
       - vim
       - gnome-tweak-tool
       - virtualbox-dkms
+    tags:
+      - packages
+
+  - name: Install base packages
+    when: ansible_os_family|lower == "windows"
+    apt: name={{ item }} state=present
+    with_items:
+      - git
+      - curl
+      - vim
     tags:
       - packages
