@@ -15,9 +15,8 @@
   roles:
     - common
 
-- name: Install Packages at sandbox machine
-  hosts: sandbox_local
-  become: yes
-  remote_user: "{{ ansible_ssh_user | default('vagrant') }}"
+- name: Windows test
+  hosts: windows_local
+  remote_user: "{{ ansible_ssh_user | default('raffa') }}"
   roles:
-    - php
+    - common
