@@ -21,7 +21,7 @@ function checkRequiredPackages()
         echo "Installing openssh-server"
 
         sudo apt-get update
-	      sudo apt-get install openssh-server --yes
+        sudo apt-get install openssh-server --yes
     fi
 }
 
@@ -42,12 +42,15 @@ function ubuntu()
         sudo apt-get update
         sudo apt-get install software-properties-common --yes
 
-	if [ ! -f "/etc/apt/sources.list.d/ansible-ubuntu-ansible-bionic.list" ]; then
+	  if [ ! -f "/etc/apt/sources.list.d/ansible-ubuntu-ansible-bionic.list" ]; then
         sudo apt-add-repository ppa:ansible/ansible --yes
-	fi
+	  fi
 
         sudo apt-get update
-        sudo apt-get install ansible --yes
+        sudo apt-get install ansible python-pip --yes
+        sudo pip install PyYAML Jinja2 httplib2 six
+        sudo apt-get install libssl-dev --yes
+        sudo pip install paramiko pywinrm
     elif [ ${linuxCodename} = "trusty" ]; then
         sudo apt-get update
         sudo apt-get install python-software-properties --yes
