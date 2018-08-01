@@ -1,3 +1,11 @@
+# Running ansible by Hand
+
+```bash
+ansible-playbook --private-key=~/.vagrant.d/insecure_private_key -u vagrant -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory playbook.yml
+```
+
+Link for full documentation:
+[https://docs.ansible.com/ansible/2.5/scenario_guides/guide_vagrant.html](https://docs.ansible.com/ansible/2.5/scenario_guides/guide_vagrant.html)
 
 # Windows 10 build 16215 and higher
 
