@@ -3,8 +3,7 @@
 if ((Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux).State -ne 'Enabled') {
     try {
         Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart
-    }
-    catch {
+    } catch {
         Write-Warning 'Unable to install the WSL feature!'
     }
 } else {
