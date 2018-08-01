@@ -9,15 +9,14 @@
       - vim
       - gnome-tweak-tool
       - virtualbox-dkms
+      - xine-ui
+      - unrar
     tags:
       - packages
 
   - name: Install base packages
     when: ansible_os_family|lower == "windows"
-    apt: name={{ item }} state=present
-    with_items:
-      - git
-      - curl
-      - vim
+    win_chocolatey: 
+      name: telegram
     tags:
       - packages
