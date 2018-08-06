@@ -20,7 +20,6 @@
     owner: jenkins
     group: jenkins
 
-
 - name: Add pub key
   copy:
     src: keys/jenkins.pub
