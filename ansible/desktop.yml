@@ -5,4 +5,3 @@
   remote_user: rafael
   roles:
     - desktop-apps
-    - docker
