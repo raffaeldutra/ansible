@@ -1,12 +1,11 @@
 ---
 - name: Deploy Jenkins CI
-  hosts: jenkins_server
+  hosts: jenkins_local
   remote_user: "{{ ansible_ssh_user | default('vagrant') }}"
   become: yes
   roles:
     - java8
     - geerlingguy.jenkins
-    - jenkins
 
 - name: Install Ansible at local machine
   hosts: localhost
