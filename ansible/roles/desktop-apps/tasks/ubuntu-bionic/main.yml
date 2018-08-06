@@ -45,3 +45,13 @@
   - name: Task for Slack
     import_tasks: slack.yml
     when: slack_installed.rc != 0
+
+# Vagrant
+  - name: Test Vagrant installation
+    shell: "dpkg -s vagrant 2>/dev/null >/dev/null"
+    register: vagrant_installed
+    ignore_errors: yes
+
+  - name: Task for Vagrant
+    import_tasks: vagrant.yml
+    when: vagrant_installed.rc > 0

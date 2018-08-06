@@ -17,3 +17,8 @@ optionalMountingPoints:
 slackVersion: 3.2.1
 slackArch: amd64
 slackPackageDeb: slack-desktop-{{ slackVersion }}-{{ slackArch }}.deb
+
+# Vagrant options
+vagrantVersion: 2.1.2
+vagrantArch: x86_64
+vagrantPackageDeb: vagrant_{{ vagrantVersion}}_{{ vagrantArch}}.deb
