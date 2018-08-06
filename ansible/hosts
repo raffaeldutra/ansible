@@ -1,12 +1,14 @@
-[jenkins_server]
+[jenkins_local]
 jenkins.local ansible_ssh_host=172.16.10.100 ansible_ssh_port=22
 
 [sandbox_local]
 sandbox.local ansible_ssh_user=vagrant ansible_ssh_host=172.16.10.2 ansible_ssh_port=22 ansible_ssh_private_key_file=/.vagrant/machines/sandbox/virtualbox/private_key
-#sandbox.local ansible_ssh_user=vagrant ansible_ssh_host=172.16.10.2 ansible_ssh_port=22
 
-[docker_localhost]
+[docker_local]
 docker.local ansible_ssh_host=172.17.0.1 ansible_ssh_port=22
 
-[localhost.local]
+[localhost_local]
 localhost ansible_ssh_user=rafael ansible_ssh_host=127.0.0.1 ansible_ssh_port=22
+
+[windows_local]
+windows.local ansible_ssh_user=raffa ansible_ssh_host=172.16.10.3 ansible_ssh_port=22
