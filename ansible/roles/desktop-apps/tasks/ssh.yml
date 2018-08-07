@@ -1,3 +1,9 @@
+- name: Create ssh directory
+  file:
+    path: "/home/{{ username }}/.ssh"
+    state: directory
+    mode: 0700
+
 - name: ensure SSH key is generated
   command: ssh-keygen -t rsa -f /home/{{ username }}/.ssh/id_rsa -N ''
   args:

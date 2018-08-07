@@ -1,5 +1,5 @@
 username: rafael
-diskData: /dev/sda
+diskData: /dev/sda1
 diskDataDestination: /mnt/sda
 
 # VirtualBox options
