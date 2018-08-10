@@ -49,6 +49,16 @@ Copy the public key to authorized_users
  ssh-copy-id rafael@localhost
 ```
 
+### Installing requirements.yaml
+```bash
+ansible-galaxy install -r requirements.yml
+```
+
+### Running in localhost
+```bash
+ansible-playbook -i localhost_local desktop.yml -vvv --ask-become-pass
+```
+
 Run it
 ```bash
 ansible-playbook -i hosts playbook.yml -vvv --ask-become-pass
