@@ -3,8 +3,22 @@
     path: "/home/{{ username }}/.ssh"
     state: directory
     mode: 0700
+    owner: "{{ username }}"
+    group: "{{ username }}"
 
 - name: ensure SSH key is generated
   command: ssh-keygen -t rsa -f /home/{{ username }}/.ssh/id_rsa -N ''
   args:
     creates: /home/{{ username }}/.ssh/id_rsa
+
+- name: Set correct permissions and owner for id_rsa
+  file:
+    path: "/home/{{ username }}/.ssh/id_rsa"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: Set correct permissions and owner for id_rsa.pub
+  file:
+    path: "/home/{{ username }}/.ssh/id_rsa.pub"
+    owner: "{{ username }}"
+    group: "{{ username }}"
