@@ -1,7 +1,3 @@
-  - name: Test Slack installation
-    shell: "dpkg -s slack-desktop 2>/dev/null >/dev/null"
-    register: installed
-
   - name: Downloading Slack
     get_url:
       url: https://downloads.slack-edge.com/linux_releases/{{ slackPackageDeb }}
