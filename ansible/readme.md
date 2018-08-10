@@ -59,7 +59,7 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook -i localhost_local desktop.yml -vvv --ask-become-pass
 ```
 
-Run it
+### Run it
 ```bash
 ansible-playbook -i hosts playbook.yml -vvv --ask-become-pass
 ```
