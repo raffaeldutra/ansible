@@ -5,3 +5,4 @@
   remote_user: rafael
   roles:
     - desktop-apps
+    - geerlingguy.docker
