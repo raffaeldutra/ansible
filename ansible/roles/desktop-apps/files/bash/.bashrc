@@ -93,7 +93,7 @@ fi
   tat="\u@"
 
 if [ "$color_prompt" = yes ]; then
-    git="$green\$(__git_ps1)$off "
+    git="$red\$(__git_ps1)$off "
     title="\[\e]0;$tat\h$ab$tty$fe\w\a\]"
     prompt="$c_numb\! $at$c_host\h$c__def$ab$c__tty$tty$c__def$fe[$c_path\w$c__def]$off"
     PS1="$title$prompt$git"
