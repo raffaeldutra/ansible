@@ -3,6 +3,6 @@
   hosts: localhost
   become: yes
   remote_user: rafael
+
   roles:
-    - desktop-apps
-    - geerlingguy.docker
+    - role: 'roles/desktop-apps'

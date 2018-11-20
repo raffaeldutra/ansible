@@ -10,6 +10,8 @@
       src: "{{ diskData }}"
       fstype: ext4
       state: mounted
+    register: disk_{{ diskData }}_mounted
+    when: disk_{{ diskData }}_mounted.rc != 0
 
 # Create all directories needed at /mnt
   - file:

@@ -5,8 +5,8 @@
       - "{{ ansible_distribution|lower }}.yml"
     tags: vars
 
-  - name: Environment setup
-    import_tasks: environment.yml
+    #- name: Environment setup
+    #import_tasks: environment.yml
 
   - name: Files for bash
     import_tasks: bash.yml

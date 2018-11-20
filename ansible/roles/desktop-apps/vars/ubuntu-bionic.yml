@@ -1,6 +1,6 @@
 username: rafael
-diskData: /dev/sda1
-diskDataDestination: /mnt/sda
+diskData: /dev/sdb1
+diskDataDestination: /mnt/sdb
 
 # VirtualBox options
 virtualboxFolder: "VirtualBox VMs"
@@ -22,3 +22,6 @@ slackPackageDeb: slack-desktop-{{ slackVersion }}-{{ slackArch }}.deb
 vagrantVersion: 2.1.2
 vagrantArch: x86_64
 vagrantPackageDeb: vagrant_{{ vagrantVersion}}_{{ vagrantArch}}.deb
+
+# IntelliJ
+ideaVersion: 2018.2.6

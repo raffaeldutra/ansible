@@ -60,3 +60,7 @@
   - name: Task for Vagrant
     import_tasks: vagrant.yml
     when: vagrant_installed.rc > 0
+
+# IntelliJ
+  - name: Task for IntelliJ
+    import_tasks: intellij.yml

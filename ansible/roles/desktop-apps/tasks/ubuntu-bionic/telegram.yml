@@ -3,5 +3,4 @@
 
   - name: Installing Telegram via apt
     apt:
-      name: telegram
-      update_cache: yes
+      name: telegram-desktop
