@@ -48,7 +48,20 @@ function ubuntu()
 
         sudo apt-get update
         sudo apt-get install ansible python-pip --yes
-        sudo pip install PyYAML Jinja2 httplib2 six
+        sudo pip install pyyaml jinja2 httplib2 six
+        sudo apt-get install libssl-dev --yes
+        sudo pip install paramiko pywinrm
+    elif [ ${linuxCodename} = "disco" ]; then
+        sudo apt-get update
+        sudo apt-get install software-properties-common --yes
+
+	  if [ ! -f "/etc/apt/sources.list.d/ansible-ubuntu-ansible-disco.list" ]; then
+        sudo apt-add-repository ppa:ansible/ansible --yes
+	  fi
+
+        sudo apt-get update
+        sudo apt-get install ansible python-pip --yes
+        sudo pip install pyyaml jinja2 httplib2 six
         sudo apt-get install libssl-dev --yes
         sudo pip install paramiko pywinrm
     elif [ ${linuxCodename} = "trusty" ]; then

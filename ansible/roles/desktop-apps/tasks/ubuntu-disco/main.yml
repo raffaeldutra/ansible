@@ -1,0 +1,66 @@
+  - name: Common packages
+    import_tasks: common.yml
+
+# Telegram
+  - name: Test Telegram installation
+    shell: "dpkg -s telegram 2>/dev/null >/dev/null"
+    register: telegram_installed
+    ignore_errors: yes
+
+  - name: Task for Telegram
+    import_tasks: telegram.yml
+    when: telegram_installed.rc != 0
+
+# Google Chrome
+  - name: Test Google Chrome installation
+    shell: "dpkg -s google-chrome-stable 2>/dev/null >/dev/null"
+    register: google_chrome_installed
+    ignore_errors: yes
+
+  - name: Task for Google Chrome
+    import_tasks: google-chrome.yml
+    when: google_chrome_installed.rc != 0
+
+# Skype
+  - name: Test Skype installation
+    shell: "dpkg -s skypeforlinux 2>/dev/null >/dev/null"
+    register: skype_installed
+    ignore_errors: yes
+
+  - name: Task for Skype
+    import_tasks: skype.yml
+    when: skype_installed.rc != 0
+
+# Atom
+  - name: Test Atom installation
+    shell: "dpkg -s atom 2>/dev/null >/dev/null"
+    register: atom_installed
+    ignore_errors: yes
+
+  - name: Task for Atom
+    import_tasks: atom.yml
+    when: atom_installed.rc != 0
+
+# Slack
+  - name: Test Slack installation
+    shell: "dpkg -s slack-desktop 2>/dev/null >/dev/null"
+    register: slack_installed
+    ignore_errors: yes
+
+  - name: Task for Slack
+    import_tasks: slack.yml
+    when: slack_installed.rc != 0
+
+# Vagrant
+  - name: Test Vagrant installation
+    shell: "dpkg -s vagrant 2>/dev/null >/dev/null"
+    register: vagrant_installed
+    ignore_errors: yes
+
+  - name: Task for Vagrant
+    import_tasks: vagrant.yml
+    when: vagrant_installed.rc > 0
+
+# IntelliJ
+  - name: Task for IntelliJ
+    import_tasks: intellij.yml

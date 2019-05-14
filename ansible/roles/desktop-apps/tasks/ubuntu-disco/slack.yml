@@ -1,0 +1,14 @@
+  - name: Downloading Slack
+    get_url:
+      url: https://downloads.slack-edge.com/linux_releases/{{ slackPackageDeb }}
+      dest: /tmp
+      mode: 0644
+
+  - name: Installing Slack
+    apt:
+      deb: /tmp/{{ slackPackageDeb }}
+
+  - name: Removing {{ slackPackageDeb }} package
+    file:
+      state: absent
+      path: /tmp/{{ slackPackageDeb }}

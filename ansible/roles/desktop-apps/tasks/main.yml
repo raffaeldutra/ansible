@@ -23,3 +23,7 @@
   - name: Ubuntu Bionic
     import_tasks: ubuntu-bionic/main.yml
     when: (ansible_distribution|lower == "ubuntu" and ansible_distribution_release == "bionic")
+
+  - name: Ubuntu Disco
+    import_tasks: ubuntu-disco/main.yml
+    when: (ansible_distribution|lower == "ubuntu" and ansible_distribution_release == "disco")
