@@ -1,0 +1,14 @@
+  - name: Downloading Vagrant
+    get_url:
+      url: https://releases.hashicorp.com/vagrant/{{ vagrantVersion }}/{{ vagrantPackageDeb }}
+      dest: /tmp
+      mode: 0644
+
+  - name: Installing Vagrant
+    apt:
+      deb: /tmp/{{ vagrantPackageDeb }}
+
+  - name: Removing {{ vagrantPackageDeb }} package
+    file:
+      state: absent
+      path: /tmp/{{ vagrantPackageDeb }}

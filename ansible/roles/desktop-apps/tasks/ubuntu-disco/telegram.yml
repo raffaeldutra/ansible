@@ -1,0 +1,6 @@
+  - name: Add Telegram repository
+    apt_repository: repo='ppa:atareao/telegram' state=present
+
+  - name: Installing Telegram via apt
+    apt:
+      name: telegram-desktop
